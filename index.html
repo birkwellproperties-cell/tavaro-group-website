@@ -3,41 +3,70 @@
   <head>
     <meta charset="UTF-8" />
 
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="/brand/favicon-32x32.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="/brand/favicon-16x16.png"
-    />
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/brand/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/brand/favicon-16x16.png" />
     <link rel="apple-touch-icon" href="/brand/apple-touch-icon.png" />
 
+    <!-- Viewport -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- SEO -->
     <title>Tavaro Group | Agricultural Software Systems</title>
 
     <meta
       name="description"
-      content="Tavaro Group builds practical agricultural software systems including FarmOS Livestock Farm System."
+      content="Tavaro Group builds practical agricultural software systems. Explore FarmOS Livestock Farm System and modernize your farm operations."
     />
 
-    <meta property="og:title" content="Tavaro Group" />
+    <meta
+      name="keywords"
+      content="Farm Management Software, Livestock Management, FarmOS, Agriculture Software, Livestock Records, Farm Technology"
+    />
+
+    <meta
+      property="og:title"
+      content="Tavaro Group | Agricultural Software Systems"
+    />
+
     <meta
       property="og:description"
-      content="Practical agricultural software systems built from real farming experience."
+      content="Practical software systems built from real farming experience."
     />
-    <meta property="og:image" content="/brand/tavaro-logo.png" />
+
+    <meta
+      property="og:image"
+      content="https://tavarogroup.com/brand/tavaro-logo.png"
+    />
+
+    <meta
+      property="og:url"
+      content="https://tavarogroup.com"
+    />
+
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://tavarogroup.com" />
+
+    <!-- Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-4SFKV0DMW3"
+    ></script>
+
+    <script>
+      window.dataLayer = window.dataLayer || [];
+
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+
+      gtag("js", new Date());
+      gtag("config", "G-4SFKV0DMW3");
+    </script>
   </head>
 
   <body>
     <div id="root"></div>
+
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
