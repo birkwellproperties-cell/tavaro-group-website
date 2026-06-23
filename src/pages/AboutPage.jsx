@@ -1,9 +1,14 @@
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import SEO from "../components/SEO";
 
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-[#020817] text-white">
+      <SEO
+        title="About Tavaro Group"
+        description="Learn how Tavaro Group was created from real farming challenges and the mission behind FarmOS."
+      />
       <Navbar />
 
       <main>

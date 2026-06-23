@@ -1,9 +1,14 @@
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import SEO from "../components/SEO";
 
 export default function PrivacyPolicy() {
   return (
     <div className="min-h-screen bg-[#020817] text-white">
+      <SEO
+        title="Privacy Policy | Tavaro Group"
+        description="Privacy Policy for Tavaro Group and FarmOS Livestock Farm System."
+      />  
       <Navbar />
 
       <main>

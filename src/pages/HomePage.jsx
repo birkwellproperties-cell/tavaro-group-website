@@ -1,9 +1,15 @@
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import SEO from "../components/SEO";
 
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-[#020817] text-white">
+      <SEO
+        title="Tavaro Group | Agricultural Software Systems"
+        description="Practical agricultural software built from real farming experience. Explore FarmOS Livestock Farm System."
+      />
+
       <Navbar />
 
       {/* HERO */}
@@ -74,6 +80,16 @@ export default function HomePage() {
               ))}
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* KPI SECTION */}
+      <section className="border-b border-amber-500/20 bg-[#06152a]/70 px-6 py-12">
+        <div className="mx-auto grid max-w-7xl gap-6 md:grid-cols-4">
+          <KpiCard value="READY" label="Production Platform" />
+          <KpiCard value="12+" label="Major Modules" />
+          <KpiCard value="50+" label="Features" />
+          <KpiCard value="MOBILE" label="Launching Soon" />
         </div>
       </section>
 
@@ -148,10 +164,12 @@ export default function HomePage() {
               title="Visibility"
               text="Know what is happening on the farm without depending only on phone calls, memory, or handwritten notes."
             />
+
             <InfoCard
               title="Accountability"
               text="Track tasks, health records, production, staff activity, and daily operations with clearer responsibility."
             />
+
             <InfoCard
               title="Better Decisions"
               text="Use real farm records to reduce losses, improve productivity, and make decisions with more confidence."
@@ -280,6 +298,18 @@ function MiniScreenshot({ src, title, text }) {
       <div className="p-5">
         <h3 className="text-xl font-black text-amber-400">{title}</h3>
         <p className="mt-3 text-sm leading-6 text-slate-300">{text}</p>
+      </div>
+    </div>
+  );
+}
+
+function KpiCard({ value, label }) {
+  return (
+    <div className="rounded-3xl border border-amber-500/20 bg-white/[0.04] p-6 text-center shadow-xl shadow-black/20">
+      <div className="gold-text text-4xl font-black">{value}</div>
+
+      <div className="mt-3 text-sm font-black uppercase tracking-widest text-slate-300">
+        {label}
       </div>
     </div>
   );

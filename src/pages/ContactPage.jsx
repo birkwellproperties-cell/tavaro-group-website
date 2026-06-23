@@ -2,6 +2,7 @@ import { useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { supabase } from "../lib/supabase";
+import SEO from "../components/SEO";
 
 export default function ContactPage() {
   const [form, setForm] = useState({
@@ -82,6 +83,10 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen bg-[#020817] text-white">
+      <SEO
+        title="Contact Tavaro Group"
+        description="Contact Tavaro Group about FarmOS, partnerships, demonstrations, and agricultural software solutions."
+      />
       <Navbar />
 
       <main>

@@ -1,6 +1,7 @@
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import ScreenshotLightbox from "../components/ScreenshotLightbox";
+import SEO from "../components/SEO";
 
 export default function FarmOSPage() {
   const features = [
@@ -62,6 +63,10 @@ export default function FarmOSPage() {
 
   return (
     <div className="min-h-screen bg-[#020817] text-white">
+      <SEO
+        title="FarmOS Livestock Farm System | Tavaro Group"
+        description="Production-ready livestock management software for animal records, health, breeding, production, reporting, and farm intelligence."
+      />
       <Navbar />
 
       <section className="relative overflow-hidden border-b border-amber-500/20 px-6 py-24">
