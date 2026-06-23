@@ -1,52 +1,142 @@
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-slate-950 text-white">
+    <div className="min-h-screen bg-[#020817] text-white">
       <Navbar />
 
       {/* HERO */}
-      <section className="mx-auto max-w-7xl px-6 py-24">
-        <div className="max-w-5xl">
-          <p className="mb-4 inline-block rounded-full bg-emerald-500 px-4 py-2 text-sm font-black text-slate-950">
-            Built From Real Farming Experience
-          </p>
+      <section className="relative overflow-hidden border-b border-amber-500/20 px-6 py-24">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_20%,rgba(191,148,75,0.2),transparent_32%),radial-gradient(circle_at_20%_30%,rgba(20,80,140,0.38),transparent_35%)]" />
 
-          <h1 className="text-5xl font-black leading-tight md:text-7xl">
-            Farming is hard enough without chasing records and waiting for updates.
-          </h1>
+        <div className="relative mx-auto grid max-w-7xl gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+          <div>
+            <p className="inline-block rounded-full bg-amber-500 px-4 py-2 text-sm font-black uppercase tracking-wider text-slate-950">
+              Built From Real Farming Experience
+            </p>
 
-          <p className="mt-8 max-w-4xl text-xl leading-9 text-slate-300">
-            Tavaro Group was created from real farming challenges. After
-            experiencing the difficulty of managing a farm from abroad, we began
-            building practical systems that help farmers get better visibility,
-            accountability, and confidence in their daily operations.
-          </p>
+            <h1 className="mt-6 text-5xl font-black leading-tight md:text-7xl">
+              Powering farms.
+              <span className="gold-text block">Empowering growth.</span>
+            </h1>
 
-          <div className="mt-10 flex flex-wrap gap-4">
-            <a
-              href="/farmos"
-              className="rounded-xl bg-emerald-500 px-6 py-4 font-black text-slate-950 hover:bg-emerald-400"
-            >
-              Explore FarmOS
-            </a>
+            <p className="mt-8 max-w-4xl text-xl leading-9 text-slate-300">
+              Tavaro Group builds practical software systems shaped by real
+              farming challenges. FarmOS was created after experiencing the
+              difficulty of managing farm operations from abroad — delayed
+              updates, missing records, and decisions made without clear
+              information.
+            </p>
 
-            <a
-              href="/about"
-              className="rounded-xl border border-white/20 px-6 py-4 font-black hover:bg-white/10"
-            >
-              Read Our Story
-            </a>
+            <div className="mt-10 flex flex-wrap gap-4">
+              <a
+                href="/farmos"
+                className="rounded-xl bg-amber-500 px-6 py-4 font-black text-slate-950 shadow-lg shadow-amber-500/20 hover:bg-amber-400"
+              >
+                Explore FarmOS
+              </a>
+
+              <a
+                href="/about"
+                className="rounded-xl border border-amber-500/40 px-6 py-4 font-black text-amber-300 hover:bg-amber-500/10"
+              >
+                Read Our Story
+              </a>
+            </div>
+          </div>
+
+          <div className="glass-card rounded-3xl p-8">
+            <p className="text-sm font-black uppercase tracking-widest text-amber-400">
+              Flagship Platform
+            </p>
+
+            <h2 className="mt-4 text-3xl font-black">FarmOS Livestock</h2>
+
+            <p className="mt-4 leading-7 text-slate-300">
+              Production-ready desktop livestock management software with
+              mobile access launching soon.
+            </p>
+
+            <div className="mt-8 grid gap-3">
+              {[
+                "Animal & Herd Records",
+                "Health Scheduling",
+                "Production Tracking",
+                "Executive Dashboards",
+              ].map((item) => (
+                <div
+                  key={item}
+                  className="rounded-xl border border-amber-500/20 bg-white/[0.04] p-4 text-sm font-bold text-slate-200"
+                >
+                  ✓ {item}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* WHY */}
-      <section className="border-y border-white/10 bg-slate-900/70">
-        <div className="mx-auto max-w-7xl px-6 py-20">
-          <h2 className="text-4xl font-black">Why We Built FarmOS</h2>
+      {/* FARMOS IN ACTION PREVIEW */}
+      <section className="mx-auto max-w-7xl px-6 py-20">
+        <p className="text-sm font-black uppercase tracking-widest text-amber-400">
+          FarmOS In Action
+        </p>
 
-          <p className="mt-5 max-w-4xl text-lg leading-8 text-slate-300">
+        <h2 className="mt-4 max-w-4xl text-4xl font-black">
+          A real platform farmers can see, understand, and use.
+        </h2>
+
+        <p className="mt-5 max-w-4xl text-lg leading-8 text-slate-300">
+          FarmOS is not just a concept. The desktop platform is production ready
+          and built to help farms manage records, health, production, reports,
+          and executive decisions from one organized system.
+        </p>
+
+        <div className="mt-10 grid gap-8 lg:grid-cols-[1.3fr_0.7fr]">
+          <div className="overflow-hidden rounded-3xl border border-amber-500/25 bg-white/[0.04] p-3 shadow-2xl shadow-black/30">
+            <img
+              src="/screenshots/executive-dashboard.png"
+              alt="FarmOS Executive Dashboard"
+              className="w-full rounded-2xl border border-white/10"
+            />
+          </div>
+
+          <div className="grid gap-6">
+            <MiniScreenshot
+              src="/screenshots/herd-register.png"
+              title="Animal Records"
+              text="Track herd records, IDs, status, and lifecycle information."
+            />
+
+            <MiniScreenshot
+              src="/screenshots/health-scheduler.png"
+              title="Health Scheduling"
+              text="Manage treatments, vaccinations, and herd health activities."
+            />
+          </div>
+        </div>
+
+        <a
+          href="/farmos"
+          className="mt-8 inline-block rounded-xl border border-amber-500/40 px-6 py-4 font-black text-amber-300 hover:bg-amber-500/10"
+        >
+          View Full FarmOS Showcase
+        </a>
+      </section>
+
+      {/* WHY */}
+      <section className="border-y border-amber-500/20 bg-[#06152a]/70">
+        <div className="mx-auto max-w-7xl px-6 py-20">
+          <p className="text-sm font-black uppercase tracking-widest text-amber-400">
+            Why We Built FarmOS
+          </p>
+
+          <h2 className="mt-4 max-w-4xl text-4xl font-black">
+            Farming needs clear records, timely updates, and better visibility.
+          </h2>
+
+          <p className="mt-6 max-w-4xl text-lg leading-8 text-slate-300">
             Many farmers struggle with the same problems: missing records,
             delayed updates, unclear responsibilities, and decisions made
             without reliable information. FarmOS was built to help solve those
@@ -58,12 +148,10 @@ export default function HomePage() {
               title="Visibility"
               text="Know what is happening on the farm without depending only on phone calls, memory, or handwritten notes."
             />
-
             <InfoCard
               title="Accountability"
               text="Track tasks, health records, production, staff activity, and daily operations with clearer responsibility."
             />
-
             <InfoCard
               title="Better Decisions"
               text="Use real farm records to reduce losses, improve productivity, and make decisions with more confidence."
@@ -74,14 +162,16 @@ export default function HomePage() {
 
       {/* FEATURED PRODUCT */}
       <section className="mx-auto max-w-7xl px-6 py-20">
-        <h2 className="text-4xl font-black">Featured Product</h2>
+        <p className="text-sm font-black uppercase tracking-widest text-amber-400">
+          Featured Product
+        </p>
 
-        <div className="mt-10 rounded-3xl border border-emerald-400/20 bg-emerald-400/10 p-8">
-          <p className="mb-3 text-sm font-black uppercase tracking-wider text-emerald-300">
+        <div className="mt-8 rounded-3xl border border-amber-500/25 bg-gradient-to-r from-[#071a33] to-[#020817] p-8 shadow-2xl shadow-black/30">
+          <p className="text-sm font-black uppercase tracking-widest text-amber-400">
             Desktop Platform Production Ready
           </p>
 
-          <h3 className="text-3xl font-black">
+          <h3 className="mt-4 text-3xl font-black">
             FarmOS Livestock Farm System
           </h3>
 
@@ -104,7 +194,7 @@ export default function HomePage() {
             ].map((item) => (
               <div
                 key={item}
-                className="rounded-xl border border-white/10 bg-slate-950/70 p-4 text-sm font-bold text-slate-200"
+                className="rounded-xl border border-amber-500/20 bg-white/[0.04] p-4 text-sm font-bold text-slate-200"
               >
                 ✓ {item}
               </div>
@@ -113,7 +203,7 @@ export default function HomePage() {
 
           <a
             href="/farmos"
-            className="mt-8 inline-block rounded-xl bg-emerald-500 px-6 py-4 font-black text-slate-950 hover:bg-emerald-400"
+            className="mt-8 inline-block rounded-xl bg-amber-500 px-6 py-4 font-black text-slate-950 shadow-lg shadow-amber-500/20 hover:bg-amber-400"
           >
             Learn More About FarmOS
           </a>
@@ -121,13 +211,20 @@ export default function HomePage() {
       </section>
 
       {/* PRODUCT ROADMAP */}
-      <section className="border-y border-white/10 bg-slate-900/70">
+      <section className="border-y border-amber-500/20 bg-[#06152a]/70">
         <div className="mx-auto max-w-7xl px-6 py-20">
-          <h2 className="text-4xl font-black">FarmOS Product Roadmap</h2>
+          <p className="text-sm font-black uppercase tracking-widest text-amber-400">
+            Product Roadmap
+          </p>
+
+          <h2 className="mt-4 text-4xl font-black">
+            FarmOS is growing into a family of agricultural systems.
+          </h2>
 
           <p className="mt-5 max-w-4xl text-lg leading-8 text-slate-300">
-            FarmOS is growing into a family of agricultural systems built around
-            the needs of different types of farms.
+            FarmOS is built around the needs of different types of farms while
+            sharing the same foundation: records, users, alerts, reports,
+            dashboards, backups, and operational control.
           </p>
 
           <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
@@ -139,34 +236,59 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* MISSION CTA */}
-      <section className="bg-emerald-500 px-6 py-20 text-slate-950">
-        <div className="mx-auto max-w-7xl">
-          <h2 className="text-4xl font-black">
+      {/* CTA */}
+      <section className="border-y border-amber-500/20 bg-[#020817] px-6 py-20">
+        <div className="mx-auto max-w-7xl rounded-3xl border border-amber-500/25 bg-gradient-to-r from-[#071a33] to-[#020817] p-10 shadow-2xl shadow-black/30">
+          <p className="text-sm font-black uppercase tracking-widest text-amber-400">
+            Tavaro Group
+          </p>
+
+          <h2 className="mt-4 text-4xl font-black">
             Technology should make farming clearer, not more complicated.
           </h2>
 
-          <p className="mt-6 max-w-3xl text-lg font-semibold">
+          <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-300">
             We built FarmOS to help farmers spend less time chasing information
             and more time growing stronger, more organized operations.
           </p>
 
           <a
-            href="/contact"
-            className="mt-8 inline-block rounded-xl bg-slate-950 px-6 py-4 font-black text-white"
+            href="/demo"
+            className="mt-8 inline-block rounded-xl bg-amber-500 px-6 py-4 font-black text-slate-950 shadow-lg shadow-amber-500/20 hover:bg-amber-400"
           >
-            Contact Tavaro Group
+            Request Demo
           </a>
         </div>
       </section>
+
+      <Footer />
+    </div>
+  );
+}
+
+function MiniScreenshot({ src, title, text }) {
+  return (
+    <div className="overflow-hidden rounded-3xl border border-amber-500/25 bg-white/[0.04] shadow-2xl shadow-black/30">
+      <div className="bg-[#020817] p-3">
+        <img
+          src={src}
+          alt={title}
+          className="w-full rounded-2xl border border-white/10"
+        />
+      </div>
+
+      <div className="p-5">
+        <h3 className="text-xl font-black text-amber-400">{title}</h3>
+        <p className="mt-3 text-sm leading-6 text-slate-300">{text}</p>
+      </div>
     </div>
   );
 }
 
 function InfoCard({ title, text }) {
   return (
-    <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
-      <h3 className="text-xl font-black text-emerald-400">{title}</h3>
+    <div className="rounded-2xl border border-amber-500/20 bg-white/[0.04] p-6 shadow-xl shadow-black/20">
+      <h3 className="text-xl font-black text-amber-400">{title}</h3>
       <p className="mt-3 leading-7 text-slate-300">{text}</p>
     </div>
   );
@@ -175,10 +297,10 @@ function InfoCard({ title, text }) {
 function RoadmapCard({ title, status, active = false }) {
   return (
     <div
-      className={`rounded-2xl border p-6 ${
+      className={`rounded-2xl border p-6 shadow-xl shadow-black/20 ${
         active
-          ? "border-emerald-400/20 bg-emerald-400/10"
-          : "border-white/10 bg-white/5"
+          ? "border-amber-500/25 bg-amber-500/10"
+          : "border-amber-500/20 bg-white/[0.04]"
       }`}
     >
       <h3 className="text-xl font-black">{title}</h3>

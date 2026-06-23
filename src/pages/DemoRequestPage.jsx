@@ -3,14 +3,15 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { supabase } from "../lib/supabase";
 
-export default function ContactPage() {
+export default function DemoRequestPage() {
   const [form, setForm] = useState({
     name: "",
     farm_name: "",
     email: "",
     phone: "",
     country: "",
-    interest: "FarmOS Livestock Farm System",
+    herd_size: "",
+    preferred_time: "",
     message: "",
   });
 
@@ -24,26 +25,36 @@ export default function ContactPage() {
     }));
   }
 
+  function buildMessage() {
+    return `
+Herd Size: ${form.herd_size}
+Preferred Demo Time: ${form.preferred_time}
+
+Message:
+${form.message}
+    `;
+  }
+
   async function handleSubmit(e) {
     e.preventDefault();
     setLoading(true);
     setNotice("");
 
+    const payload = {
+      name: form.name,
+      farm_name: form.farm_name,
+      email: form.email,
+      phone: form.phone,
+      country: form.country,
+      interest: "FarmOS Demo Request",
+      message: buildMessage(),
+    };
+
     try {
-      const { error } = await supabase.from("contact_requests").insert([
-        {
-          name: form.name,
-          farm_name: form.farm_name,
-          email: form.email,
-          phone: form.phone,
-          country: form.country,
-          interest: form.interest,
-          message: form.message,
-        },
-      ]);
+      const { error } = await supabase.from("contact_requests").insert([payload]);
 
       if (error) {
-        console.error("Contact form error:", error);
+        console.error("Demo request error:", error);
         setNotice("Something went wrong. Please try again.");
         return;
       }
@@ -51,7 +62,7 @@ export default function ContactPage() {
       const { error: emailError } = await supabase.functions.invoke(
         "send-contact-email",
         {
-          body: form,
+          body: payload,
         }
       );
 
@@ -60,7 +71,7 @@ export default function ContactPage() {
       }
 
       setNotice(
-        "Thank you for contacting Tavaro Group. We've received your request and will get back to you as soon as possible."
+        "Thank you. Your FarmOS demo request has been received. We will contact you soon."
       );
 
       setForm({
@@ -69,11 +80,12 @@ export default function ContactPage() {
         email: "",
         phone: "",
         country: "",
-        interest: "FarmOS Livestock Farm System",
+        herd_size: "",
+        preferred_time: "",
         message: "",
       });
     } catch (err) {
-      console.error("Unexpected contact form error:", err);
+      console.error("Unexpected demo request error:", err);
       setNotice("Something went wrong. Please try again.");
     } finally {
       setLoading(false);
@@ -88,19 +100,19 @@ export default function ContactPage() {
         <section className="relative overflow-hidden border-b border-amber-500/20 px-6 py-24">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_20%,rgba(191,148,75,0.18),transparent_32%),radial-gradient(circle_at_20%_30%,rgba(20,80,140,0.35),transparent_35%)]" />
 
-          <div className="relative mx-auto max-w-4xl">
+          <div className="relative mx-auto max-w-5xl">
             <p className="inline-block rounded-full bg-amber-500 px-4 py-2 text-sm font-black uppercase tracking-wider text-slate-950">
-              Contact Tavaro Group
+              FarmOS Demo
             </p>
 
             <h1 className="mt-6 text-5xl font-black leading-tight md:text-7xl">
-              Let’s talk about your farm or operation.
+              See FarmOS in action.
             </h1>
 
-            <p className="mt-8 text-xl leading-9 text-slate-300">
-              Interested in FarmOS, future FarmOS products, partnerships,
-              demonstrations, or early access? Send us a message and we’ll get
-              back to you.
+            <p className="mt-8 max-w-4xl text-xl leading-9 text-slate-300">
+              Request a walkthrough of the FarmOS Livestock desktop platform and
+              see how it can help manage animals, health, feed, production,
+              staff, reports, and daily farm operations.
             </p>
           </div>
         </section>
@@ -109,55 +121,49 @@ export default function ContactPage() {
           <div className="space-y-6">
             <div className="glass-card rounded-3xl p-8">
               <p className="text-sm font-black uppercase tracking-widest text-amber-400">
-                Direct Contact
+                What You Can Expect
               </p>
 
               <h2 className="mt-4 text-3xl font-black">
-                Tavaro Group
+                A practical product walkthrough
               </h2>
 
               <p className="mt-4 leading-7 text-slate-300">
-                For FarmOS demos, partnerships, early access, and product
-                inquiries.
+                We’ll walk through how FarmOS helps farms organize records,
+                monitor health activities, track production, manage staff
+                operations, and view executive dashboards.
               </p>
 
-              <div className="mt-8 space-y-4 text-sm font-bold text-slate-300">
-                <p>
-                  <span className="text-amber-400">Email:</span>{" "}
-                  info@tavarogroup.com
-                </p>
-                <p>
-                  <span className="text-amber-400">Product:</span>{" "}
-                  FarmOS Livestock Farm System
-                </p>
-                <p>
-                  <span className="text-amber-400">Status:</span>{" "}
-                  Desktop platform production ready
-                </p>
+              <div className="mt-8 grid gap-3">
+                {[
+                  "Executive Farm Command Center",
+                  "Animal & Herd Records",
+                  "Health Scheduling & Alerts",
+                  "Feed, Production & Reports",
+                ].map((item) => (
+                  <div
+                    key={item}
+                    className="rounded-xl border border-amber-500/20 bg-white/[0.04] p-4 text-sm font-bold text-slate-200"
+                  >
+                    ✓ {item}
+                  </div>
+                ))}
               </div>
             </div>
 
             <div className="rounded-3xl border border-amber-500/25 bg-gradient-to-r from-[#071a33] to-[#020817] p-8 shadow-2xl shadow-black/30">
               <p className="text-sm font-black uppercase tracking-widest text-amber-400">
-                Need a walkthrough?
+                Production Status
               </p>
 
               <h3 className="mt-4 text-2xl font-black">
-                Request a FarmOS demo
+                Desktop platform ready
               </h3>
 
               <p className="mt-4 leading-7 text-slate-300">
-                Want to see the actual platform? Request a demo and we’ll show
-                how FarmOS can support your farm records, health schedules,
-                production tracking, and reporting.
+                FarmOS Livestock desktop platform is production ready. The
+                mobile application is launching soon.
               </p>
-
-              <a
-                href="/demo"
-                className="mt-6 inline-block rounded-xl bg-amber-500 px-6 py-4 font-black text-slate-950 shadow-lg shadow-amber-500/20 hover:bg-amber-400"
-              >
-                Request Demo
-              </a>
             </div>
           </div>
 
@@ -172,14 +178,14 @@ export default function ContactPage() {
               <Input
                 label="Name"
                 value={form.name}
-                onChange={(value) => updateField("name", value)}
+                onChange={(v) => updateField("name", v)}
                 required
               />
 
               <Input
                 label="Farm / Company Name"
                 value={form.farm_name}
-                onChange={(value) => updateField("farm_name", value)}
+                onChange={(v) => updateField("farm_name", v)}
               />
 
               <div className="grid gap-6 md:grid-cols-2">
@@ -187,37 +193,37 @@ export default function ContactPage() {
                   label="Email"
                   type="email"
                   value={form.email}
-                  onChange={(value) => updateField("email", value)}
+                  onChange={(v) => updateField("email", v)}
                   required
                 />
 
                 <Input
                   label="Phone / WhatsApp"
                   value={form.phone}
-                  onChange={(value) => updateField("phone", value)}
+                  onChange={(v) => updateField("phone", v)}
+                />
+              </div>
+
+              <div className="grid gap-6 md:grid-cols-2">
+                <Input
+                  label="Country"
+                  value={form.country}
+                  onChange={(v) => updateField("country", v)}
+                />
+
+                <Input
+                  label="Approximate Herd Size"
+                  value={form.herd_size}
+                  onChange={(v) => updateField("herd_size", v)}
                 />
               </div>
 
               <Input
-                label="Country"
-                value={form.country}
-                onChange={(value) => updateField("country", value)}
+                label="Preferred Demo Time"
+                value={form.preferred_time}
+                onChange={(v) => updateField("preferred_time", v)}
+                placeholder="Example: Weekday mornings, evenings, next Tuesday"
               />
-
-              <div>
-                <label className="mb-2 block font-bold">Interested In</label>
-                <select
-                  value={form.interest}
-                  onChange={(e) => updateField("interest", e.target.value)}
-                  className="w-full rounded-xl border border-amber-500/20 bg-[#06152a] p-4 text-white outline-none focus:border-amber-400"
-                >
-                  <option>FarmOS Livestock Farm System</option>
-                  <option>FarmOS Mobile App</option>
-                  <option>FarmOS Apiary System</option>
-                  <option>Partnership Opportunities</option>
-                  <option>Other</option>
-                </select>
-              </div>
 
               <div>
                 <label className="mb-2 block font-bold">Message</label>
@@ -226,7 +232,7 @@ export default function ContactPage() {
                   value={form.message}
                   onChange={(e) => updateField("message", e.target.value)}
                   className="w-full rounded-xl border border-amber-500/20 bg-[#06152a] p-4 text-white outline-none focus:border-amber-400"
-                  placeholder="Tell us how we can help..."
+                  placeholder="Tell us what you want to see in the demo..."
                 />
               </div>
 
@@ -235,7 +241,7 @@ export default function ContactPage() {
                 disabled={loading}
                 className="rounded-xl bg-amber-500 px-8 py-4 font-black text-slate-950 shadow-lg shadow-amber-500/20 hover:bg-amber-400 disabled:cursor-not-allowed disabled:opacity-60"
               >
-                {loading ? "Sending..." : "Request Information"}
+                {loading ? "Sending..." : "Request Demo"}
               </button>
             </form>
           </div>
@@ -247,7 +253,14 @@ export default function ContactPage() {
   );
 }
 
-function Input({ label, value, onChange, type = "text", required = false }) {
+function Input({
+  label,
+  value,
+  onChange,
+  type = "text",
+  required = false,
+  placeholder = "",
+}) {
   return (
     <div>
       <label className="mb-2 block font-bold">{label}</label>
@@ -255,6 +268,7 @@ function Input({ label, value, onChange, type = "text", required = false }) {
         type={type}
         required={required}
         value={value}
+        placeholder={placeholder}
         onChange={(e) => onChange(e.target.value)}
         className="w-full rounded-xl border border-amber-500/20 bg-[#06152a] p-4 text-white outline-none focus:border-amber-400"
       />

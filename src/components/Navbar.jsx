@@ -1,25 +1,75 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function Navbar() {
+  const [open, setOpen] = useState(false);
+
+  const links = [
+    ["Home", "/"],
+    ["FarmOS", "/farmos"],
+    ["About", "/about"],
+    ["Contact", "/contact"],
+  ];
+
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-slate-950/90 backdrop-blur">
+    <header className="sticky top-0 z-50 border-b border-amber-500/20 bg-[#020817]/95 backdrop-blur">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-        <Link to="/" className="flex items-center gap-3">
-          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-emerald-500 font-black text-slate-950">
-            T
-          </div>
-          <div>
-            <h1 className="text-xl font-black">Tavaro Group</h1>
-            <p className="text-xs text-slate-400">Software Systems</p>
-          </div>
+        <Link to="/" className="flex items-center">
+          <img
+            src="/brand/tavaro-logo.png"
+            alt="Tavaro Group"
+            className="h-14 w-auto md:h-16"
+          />
         </Link>
 
-        <nav className="flex gap-6 text-sm font-bold text-slate-300">
-          <Link to="/farmos" className="hover:text-emerald-400">FarmOS</Link>
-          <Link to="/about" className="hover:text-emerald-400">About</Link>
-          <Link to="/contact" className="hover:text-emerald-400">Contact</Link>
+        <nav className="hidden items-center gap-8 text-sm font-black uppercase tracking-wide text-slate-200 md:flex">
+          {links.map(([label, href]) => (
+            <Link key={label} to={href} className="hover:text-amber-400">
+              {label}
+            </Link>
+          ))}
+
+          <Link
+            to="/demo"
+            className="rounded-xl bg-amber-500 px-5 py-3 font-black text-slate-950 shadow-lg shadow-amber-500/20 hover:bg-amber-400"
+          >
+            Request Demo
+          </Link>
         </nav>
+
+        <button
+          type="button"
+          onClick={() => setOpen((current) => !current)}
+          className="rounded-xl border border-amber-500/30 px-4 py-2 text-sm font-black uppercase tracking-wide text-amber-400 md:hidden"
+        >
+          {open ? "Close" : "Menu"}
+        </button>
       </div>
+
+      {open && (
+        <div className="border-t border-amber-500/20 bg-[#020817] px-6 py-6 md:hidden">
+          <div className="grid gap-4 text-sm font-black uppercase tracking-wide text-slate-200">
+            {links.map(([label, href]) => (
+              <Link
+                key={label}
+                to={href}
+                onClick={() => setOpen(false)}
+                className="rounded-xl border border-amber-500/20 bg-white/[0.04] px-4 py-3 hover:text-amber-400"
+              >
+                {label}
+              </Link>
+            ))}
+
+            <Link
+              to="/demo"
+              onClick={() => setOpen(false)}
+              className="rounded-xl bg-amber-500 px-4 py-3 text-center font-black text-slate-950"
+            >
+              Request Demo
+            </Link>
+          </div>
+        </div>
+      )}
     </header>
   );
 }

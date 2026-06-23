@@ -1,4 +1,5 @@
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 export default function FarmOSPage() {
   const features = [
@@ -17,63 +18,32 @@ export default function FarmOSPage() {
   ];
 
   const products = [
-    {
-      name: "FarmOS Livestock Farm System",
-      status: "Desktop Platform Ready",
-      active: true,
-    },
-    {
-      name: "FarmOS Mobile App",
-      status: "Launching Soon",
-      active: false,
-    },
-    {
-      name: "FarmOS Apiary System",
-      status: "Coming Soon",
-      active: false,
-    },
-    {
-      name: "FarmOS Poultry System",
-      status: "Planned",
-      active: false,
-    },
+    { name: "FarmOS Livestock Farm System", status: "Desktop Platform Ready", active: true },
+    { name: "FarmOS Mobile App", status: "Launching Soon" },
+    { name: "FarmOS Apiary System", status: "Coming Soon" },
+    { name: "FarmOS Poultry System", status: "Planned" },
   ];
 
   const plans = [
-    {
-      name: "Community",
-      price: "Free",
-      description: "For small farms getting started.",
-    },
-    {
-      name: "Starter",
-      price: "$5/mo",
-      description: "For growing farms that need better records.",
-    },
-    {
-      name: "Professional",
-      price: "$15/mo",
-      description: "For serious farm operations with multiple users.",
-    },
-    {
-      name: "Enterprise",
-      price: "Contact Us",
-      description: "For large farms, organizations, and custom deployments.",
-    },
+    { name: "Community", price: "Free", description: "For small farms getting started." },
+    { name: "Starter", price: "$5/mo", description: "For growing farms that need better records." },
+    { name: "Professional", price: "$15/mo", description: "For serious farm operations with multiple users." },
+    { name: "Enterprise", price: "Contact Us", description: "For large farms, organizations, and custom deployments." },
   ];
 
   return (
-    <div className="min-h-screen bg-slate-950 text-white">
+    <div className="min-h-screen bg-[#020817] text-white">
       <Navbar />
 
-      {/* HERO */}
-      <section className="mx-auto max-w-7xl px-6 py-24">
-        <div className="max-w-5xl">
-          <p className="mb-4 inline-block rounded-full bg-emerald-500 px-4 py-2 text-sm font-black text-slate-950">
+      <section className="relative overflow-hidden border-b border-amber-500/20 px-6 py-24">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_20%,rgba(191,148,75,0.18),transparent_32%),radial-gradient(circle_at_20%_30%,rgba(20,80,140,0.35),transparent_35%)]" />
+
+        <div className="relative mx-auto max-w-7xl">
+          <p className="inline-block rounded-full bg-amber-500 px-4 py-2 text-sm font-black uppercase tracking-wider text-slate-950">
             Flagship Product • Desktop Platform Production Ready
           </p>
 
-          <h1 className="text-5xl font-black leading-tight md:text-7xl">
+          <h1 className="mt-6 max-w-5xl text-5xl font-black leading-tight md:text-7xl">
             FarmOS Livestock Farm System
           </h1>
 
@@ -87,36 +57,84 @@ export default function FarmOSPage() {
 
           <div className="mt-10 flex flex-wrap gap-4">
             <a
-              href="/contact"
-              className="rounded-xl bg-emerald-500 px-6 py-4 font-black text-slate-950 hover:bg-emerald-400"
+              href="/demo"
+              className="rounded-xl bg-amber-500 px-6 py-4 font-black text-slate-950 shadow-lg shadow-amber-500/20 hover:bg-amber-400"
             >
               Request Demo
             </a>
 
             <a
-              href="/contact"
-              className="rounded-xl border border-white/20 px-6 py-4 font-black hover:bg-white/10"
+              href="#pricing"
+              className="rounded-xl border border-amber-500/40 px-6 py-4 font-black text-amber-300 hover:bg-amber-500/10"
             >
-              Join Early Access
+              View Pricing
             </a>
           </div>
         </div>
       </section>
 
-      {/* STATUS */}
-      <section className="border-y border-white/10 bg-slate-900/70">
-        <div className="mx-auto grid max-w-7xl gap-6 px-6 py-20 md:grid-cols-3">
+      {/* FARMOS IN ACTION */}
+      <section className="mx-auto max-w-7xl px-6 py-20">
+        <p className="text-sm font-black uppercase tracking-widest text-amber-400">
+          FarmOS In Action
+        </p>
+
+        <h2 className="mt-4 text-4xl font-black">
+          See the production-ready desktop platform.
+        </h2>
+
+        <p className="mt-5 max-w-4xl text-lg leading-8 text-slate-300">
+          FarmOS is already built as a working desktop platform for livestock
+          operations. These screens show the real system farmers can use to
+          manage records, health, production, reporting, and executive decisions.
+        </p>
+
+        <div className="mt-10 grid gap-8">
+          <ShowcaseImage
+            src="/screenshots/executive-dashboard.png"
+            title="Executive Farm Command Center"
+            text="View herd health, production, finances, alerts, risk indicators, and operational performance from one dashboard."
+            featured
+          />
+
+          <div className="grid gap-8 lg:grid-cols-2">
+            <ShowcaseImage
+              src="/screenshots/herd-register.png"
+              title="Animal & Herd Records"
+              text="Track every animal with organized records, identifiers, status, and lifecycle information."
+            />
+
+            <ShowcaseImage
+              src="/screenshots/health-scheduler.png"
+              title="Health Scheduling & Alerts"
+              text="Schedule vaccinations, treatments, deworming, and other health activities across the herd."
+            />
+
+            <ShowcaseImage
+              src="/screenshots/health-analytics.png"
+              title="Health Analytics"
+              text="Turn health records into insight with disease patterns, compliance tracking, and management visibility."
+            />
+
+            <ShowcaseImage
+              src="/screenshots/executive-action-center.png"
+              title="Executive Action Center"
+              text="Identify risks, prioritize action, and support better farm decisions using operational intelligence."
+            />
+          </div>
+        </div>
+      </section>
+
+      <section className="border-y border-amber-500/20 bg-[#06152a]/70">
+        <div className="mx-auto grid max-w-7xl gap-6 px-6 py-16 md:grid-cols-3">
           <StatusCard title="Desktop Platform" status="Production Ready" />
           <StatusCard title="Mobile App" status="Launching Soon" />
           <StatusCard title="FarmOS Ecosystem" status="Expanding" />
         </div>
       </section>
 
-      {/* OVERVIEW */}
       <section className="mx-auto max-w-7xl px-6 py-20">
-        <h2 className="text-4xl font-black">
-          Built For Real Livestock Operations
-        </h2>
+        <h2 className="text-4xl font-black">Built For Real Livestock Operations</h2>
 
         <p className="mt-6 max-w-4xl text-lg leading-8 text-slate-300">
           FarmOS helps livestock producers replace spreadsheets, paper records,
@@ -126,8 +144,7 @@ export default function FarmOSPage() {
         </p>
       </section>
 
-      {/* FEATURES */}
-      <section className="border-y border-white/10 bg-slate-900/70">
+      <section className="border-y border-amber-500/20 bg-[#06152a]/70">
         <div className="mx-auto max-w-7xl px-6 py-20">
           <h2 className="text-4xl font-black">Core Features</h2>
 
@@ -135,16 +152,15 @@ export default function FarmOSPage() {
             {features.map((feature) => (
               <div
                 key={feature}
-                className="rounded-2xl border border-white/10 bg-white/5 p-6"
+                className="rounded-2xl border border-amber-500/20 bg-white/[0.04] p-6"
               >
-                <h3 className="font-black text-emerald-400">✓ {feature}</h3>
+                <h3 className="font-black text-amber-400">✓ {feature}</h3>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* PRODUCT FAMILY */}
       <section className="mx-auto max-w-7xl px-6 py-20">
         <h2 className="text-4xl font-black">FarmOS Product Family</h2>
 
@@ -167,8 +183,7 @@ export default function FarmOSPage() {
         </div>
       </section>
 
-      {/* PRICING */}
-      <section className="border-y border-white/10 bg-slate-900/70">
+      <section id="pricing" className="border-y border-amber-500/20 bg-[#06152a]/70">
         <div className="mx-auto max-w-7xl px-6 py-20">
           <h2 className="text-4xl font-black">Launch Pricing</h2>
 
@@ -181,10 +196,10 @@ export default function FarmOSPage() {
             {plans.map((plan) => (
               <div
                 key={plan.name}
-                className="rounded-2xl border border-white/10 bg-white/5 p-6"
+                className="rounded-2xl border border-amber-500/20 bg-white/[0.04] p-6 shadow-xl shadow-black/20"
               >
                 <h3 className="text-2xl font-black">{plan.name}</h3>
-                <p className="mt-4 text-4xl font-black text-emerald-400">
+                <p className="mt-4 text-4xl font-black text-amber-400">
                   {plan.price}
                 </p>
                 <p className="mt-4 text-sm leading-6 text-slate-400">
@@ -196,35 +211,63 @@ export default function FarmOSPage() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="bg-emerald-500 px-6 py-20 text-slate-950">
-        <div className="mx-auto max-w-7xl">
-          <h2 className="text-4xl font-black">
-            Ready to Modernize Your Farm Records?
+      <section className="border-y border-amber-500/20 bg-[#020817] px-6 py-20">
+        <div className="mx-auto max-w-7xl rounded-3xl border border-amber-500/25 bg-gradient-to-r from-[#071a33] to-[#020817] p-10 shadow-2xl shadow-black/30">
+          <p className="text-sm font-black uppercase tracking-widest text-amber-400">
+            FarmOS Demo
+          </p>
+
+          <h2 className="mt-4 text-4xl font-black">
+            Ready to modernize your farm records?
           </h2>
 
-          <p className="mt-6 max-w-3xl text-lg font-semibold">
+          <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-300">
             FarmOS Livestock desktop platform is production ready, and the
-            mobile application is launching soon. Contact us to request a demo,
-            discuss onboarding, or join the early access list.
+            mobile application is launching soon. Request a demo to see how
+            FarmOS can help organize your farm operations.
           </p>
 
           <a
-            href="/contact"
-            className="mt-8 inline-block rounded-xl bg-slate-950 px-6 py-4 font-black text-white"
+            href="/demo"
+            className="mt-8 inline-block rounded-xl bg-amber-500 px-6 py-4 font-black text-slate-950 shadow-lg shadow-amber-500/20 hover:bg-amber-400"
           >
             Request Demo
           </a>
         </div>
       </section>
+
+      <Footer />
+    </div>
+  );
+}
+
+function ShowcaseImage({ src, title, text, featured = false }) {
+  return (
+    <div
+      className={`overflow-hidden rounded-3xl border border-amber-500/25 bg-white/[0.04] shadow-2xl shadow-black/30 ${
+        featured ? "lg:grid lg:grid-cols-[1.4fr_0.6fr]" : ""
+      }`}
+    >
+      <div className="bg-[#020817] p-3">
+        <img
+          src={src}
+          alt={title}
+          className="w-full rounded-2xl border border-white/10 object-cover"
+        />
+      </div>
+
+      <div className="p-6">
+        <h3 className="text-2xl font-black text-amber-400">{title}</h3>
+        <p className="mt-4 leading-7 text-slate-300">{text}</p>
+      </div>
     </div>
   );
 }
 
 function StatusCard({ title, status }) {
   return (
-    <div className="rounded-3xl border border-white/10 bg-slate-950 p-6">
-      <p className="text-sm font-black uppercase tracking-wider text-emerald-400">
+    <div className="rounded-3xl border border-amber-500/20 bg-[#020817] p-6 shadow-xl shadow-black/20">
+      <p className="text-sm font-black uppercase tracking-wider text-amber-400">
         {title}
       </p>
       <h3 className="mt-3 text-2xl font-black">{status}</h3>
@@ -235,10 +278,10 @@ function StatusCard({ title, status }) {
 function ProductCard({ name, status, active = false }) {
   return (
     <div
-      className={`rounded-2xl border p-6 ${
+      className={`rounded-2xl border p-6 shadow-xl shadow-black/20 ${
         active
-          ? "border-emerald-400/20 bg-emerald-400/10"
-          : "border-white/10 bg-white/5"
+          ? "border-amber-500/25 bg-amber-500/10"
+          : "border-amber-500/20 bg-white/[0.04]"
       }`}
     >
       <h3 className="text-2xl font-black">{name}</h3>
