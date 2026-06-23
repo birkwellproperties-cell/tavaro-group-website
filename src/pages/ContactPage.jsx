@@ -3,6 +3,10 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { supabase } from "../lib/supabase";
 import SEO from "../components/SEO";
+import {
+  trackContactSubmitted,
+  trackRequestDemoClick,
+} from "../lib/analytics";
 
 export default function ContactPage() {
   const [form, setForm] = useState({
@@ -49,6 +53,8 @@ export default function ContactPage() {
         return;
       }
 
+      trackContactSubmitted();
+
       const { error: emailError } = await supabase.functions.invoke(
         "send-contact-email",
         {
@@ -87,6 +93,7 @@ export default function ContactPage() {
         title="Contact Tavaro Group"
         description="Contact Tavaro Group about FarmOS, partnerships, demonstrations, and agricultural software solutions."
       />
+
       <Navbar />
 
       <main>
@@ -117,9 +124,7 @@ export default function ContactPage() {
                 Direct Contact
               </p>
 
-              <h2 className="mt-4 text-3xl font-black">
-                Tavaro Group
-              </h2>
+              <h2 className="mt-4 text-3xl font-black">Tavaro Group</h2>
 
               <p className="mt-4 leading-7 text-slate-300">
                 For FarmOS demos, partnerships, early access, and product
@@ -159,6 +164,7 @@ export default function ContactPage() {
 
               <a
                 href="/demo"
+                onClick={() => trackRequestDemoClick("contact_side_cta")}
                 className="mt-6 inline-block rounded-xl bg-amber-500 px-6 py-4 font-black text-slate-950 shadow-lg shadow-amber-500/20 hover:bg-amber-400"
               >
                 Request Demo

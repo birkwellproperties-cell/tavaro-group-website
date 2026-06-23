@@ -1,5 +1,10 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import {
+  trackRequestDemoClick,
+  trackSignInClick,
+  trackStartFreeClick,
+} from "../lib/analytics";
 
 const FARMOS_APP_URL = "https://systems.allianz-holdings.com";
 
@@ -33,6 +38,7 @@ export default function Navbar() {
 
           <a
             href={FARMOS_APP_URL}
+            onClick={() => trackSignInClick("navbar_desktop")}
             className="hover:text-amber-400"
           >
             Sign In
@@ -40,6 +46,7 @@ export default function Navbar() {
 
           <Link
             to="/demo"
+            onClick={() => trackRequestDemoClick("navbar_desktop")}
             className="rounded-xl border border-amber-500/40 px-5 py-3 font-black text-amber-300 hover:bg-amber-500/10"
           >
             Request Demo
@@ -47,6 +54,7 @@ export default function Navbar() {
 
           <a
             href={FARMOS_APP_URL}
+            onClick={() => trackStartFreeClick("navbar_desktop")}
             className="rounded-xl bg-amber-500 px-5 py-3 font-black text-slate-950 shadow-lg shadow-amber-500/20 hover:bg-amber-400"
           >
             Start Free
@@ -78,7 +86,10 @@ export default function Navbar() {
 
             <a
               href={FARMOS_APP_URL}
-              onClick={() => setOpen(false)}
+              onClick={() => {
+                setOpen(false);
+                trackSignInClick("navbar_mobile");
+              }}
               className="rounded-xl border border-amber-500/20 bg-white/[0.04] px-4 py-3 text-center hover:text-amber-400"
             >
               Sign In
@@ -86,7 +97,10 @@ export default function Navbar() {
 
             <Link
               to="/demo"
-              onClick={() => setOpen(false)}
+              onClick={() => {
+                setOpen(false);
+                trackRequestDemoClick("navbar_mobile");
+              }}
               className="rounded-xl border border-amber-500/40 px-4 py-3 text-center text-amber-300"
             >
               Request Demo
@@ -94,7 +108,10 @@ export default function Navbar() {
 
             <a
               href={FARMOS_APP_URL}
-              onClick={() => setOpen(false)}
+              onClick={() => {
+                setOpen(false);
+                trackStartFreeClick("navbar_mobile");
+              }}
               className="rounded-xl bg-amber-500 px-4 py-3 text-center font-black text-slate-950"
             >
               Start Free

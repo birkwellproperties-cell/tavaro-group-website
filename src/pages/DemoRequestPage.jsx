@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { supabase } from "../lib/supabase";
 import SEO from "../components/SEO";
+import { trackDemoSubmitted } from "../lib/analytics";
 
 export default function DemoRequestPage() {
   const [form, setForm] = useState({
@@ -60,6 +61,8 @@ ${form.message}
         return;
       }
 
+      trackDemoSubmitted();
+
       const { error: emailError } = await supabase.functions.invoke(
         "send-contact-email",
         {
@@ -97,8 +100,9 @@ ${form.message}
     <div className="min-h-screen bg-[#020817] text-white">
       <SEO
         title="Request a FarmOS Demo"
-         description="Request a demonstration of FarmOS Livestock Farm System and see how it can modernize farm operations."
+        description="Request a demonstration of FarmOS Livestock Farm System and see how it can modernize farm operations."
       />
+
       <Navbar />
 
       <main>

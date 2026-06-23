@@ -1,6 +1,10 @@
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import SEO from "../components/SEO";
+import {
+  trackRequestDemoClick,
+  trackStartFreeClick,
+} from "../lib/analytics";
 
 export default function HomePage() {
   return (
@@ -38,6 +42,7 @@ export default function HomePage() {
             <div className="mt-10 flex flex-wrap gap-4">
               <a
                 href="/farmos"
+                onClick={() => trackStartFreeClick("home_hero_explore_farmos")}
                 className="rounded-xl bg-amber-500 px-6 py-4 font-black text-slate-950 shadow-lg shadow-amber-500/20 hover:bg-amber-400"
               >
                 Explore FarmOS
@@ -221,6 +226,7 @@ export default function HomePage() {
 
           <a
             href="/farmos"
+            onClick={() => trackStartFreeClick("home_featured_farmos")}
             className="mt-8 inline-block rounded-xl bg-amber-500 px-6 py-4 font-black text-slate-950 shadow-lg shadow-amber-500/20 hover:bg-amber-400"
           >
             Learn More About FarmOS
@@ -272,6 +278,7 @@ export default function HomePage() {
 
           <a
             href="/demo"
+            onClick={() => trackRequestDemoClick("home_bottom_cta")}
             className="mt-8 inline-block rounded-xl bg-amber-500 px-6 py-4 font-black text-slate-950 shadow-lg shadow-amber-500/20 hover:bg-amber-400"
           >
             Request Demo
