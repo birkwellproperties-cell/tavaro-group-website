@@ -1,5 +1,6 @@
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import ScreenshotLightbox from "../components/ScreenshotLightbox";
 
 export default function FarmOSPage() {
   const features = [
@@ -29,6 +30,34 @@ export default function FarmOSPage() {
     { name: "Starter", price: "$5/mo", description: "For growing farms that need better records." },
     { name: "Professional", price: "$15/mo", description: "For serious farm operations with multiple users." },
     { name: "Enterprise", price: "Contact Us", description: "For large farms, organizations, and custom deployments." },
+  ];
+
+  const screenshots = [
+    {
+      src: "/screenshots/executive-dashboard.png",
+      title: "Executive Farm Command Center",
+      text: "View herd health, production, finances, alerts, risk indicators, and operational performance from one dashboard.",
+    },
+    {
+      src: "/screenshots/herd-register.png",
+      title: "Animal & Herd Records",
+      text: "Track every animal with organized records, identifiers, status, and lifecycle information.",
+    },
+    {
+      src: "/screenshots/health-scheduler.png",
+      title: "Health Scheduling & Alerts",
+      text: "Schedule vaccinations, treatments, deworming, and other health activities across the herd.",
+    },
+    {
+      src: "/screenshots/health-analytics.png",
+      title: "Health Analytics",
+      text: "Turn health records into insight with disease patterns, compliance tracking, and management visibility.",
+    },
+    {
+      src: "/screenshots/executive-action-center.png",
+      title: "Executive Action Center",
+      text: "Identify risks, prioritize action, and support better farm decisions using operational intelligence.",
+    },
   ];
 
   return (
@@ -73,7 +102,6 @@ export default function FarmOSPage() {
         </div>
       </section>
 
-      {/* FARMOS IN ACTION */}
       <section className="mx-auto max-w-7xl px-6 py-20">
         <p className="text-sm font-black uppercase tracking-widest text-amber-400">
           FarmOS In Action
@@ -89,40 +117,7 @@ export default function FarmOSPage() {
           manage records, health, production, reporting, and executive decisions.
         </p>
 
-        <div className="mt-10 grid gap-8">
-          <ShowcaseImage
-            src="/screenshots/executive-dashboard.png"
-            title="Executive Farm Command Center"
-            text="View herd health, production, finances, alerts, risk indicators, and operational performance from one dashboard."
-            featured
-          />
-
-          <div className="grid gap-8 lg:grid-cols-2">
-            <ShowcaseImage
-              src="/screenshots/herd-register.png"
-              title="Animal & Herd Records"
-              text="Track every animal with organized records, identifiers, status, and lifecycle information."
-            />
-
-            <ShowcaseImage
-              src="/screenshots/health-scheduler.png"
-              title="Health Scheduling & Alerts"
-              text="Schedule vaccinations, treatments, deworming, and other health activities across the herd."
-            />
-
-            <ShowcaseImage
-              src="/screenshots/health-analytics.png"
-              title="Health Analytics"
-              text="Turn health records into insight with disease patterns, compliance tracking, and management visibility."
-            />
-
-            <ShowcaseImage
-              src="/screenshots/executive-action-center.png"
-              title="Executive Action Center"
-              text="Identify risks, prioritize action, and support better farm decisions using operational intelligence."
-            />
-          </div>
-        </div>
+        <ScreenshotLightbox images={screenshots} />
       </section>
 
       <section className="border-y border-amber-500/20 bg-[#06152a]/70">
@@ -237,29 +232,6 @@ export default function FarmOSPage() {
       </section>
 
       <Footer />
-    </div>
-  );
-}
-
-function ShowcaseImage({ src, title, text, featured = false }) {
-  return (
-    <div
-      className={`overflow-hidden rounded-3xl border border-amber-500/25 bg-white/[0.04] shadow-2xl shadow-black/30 ${
-        featured ? "lg:grid lg:grid-cols-[1.4fr_0.6fr]" : ""
-      }`}
-    >
-      <div className="bg-[#020817] p-3">
-        <img
-          src={src}
-          alt={title}
-          className="w-full rounded-2xl border border-white/10 object-cover"
-        />
-      </div>
-
-      <div className="p-6">
-        <h3 className="text-2xl font-black text-amber-400">{title}</h3>
-        <p className="mt-4 leading-7 text-slate-300">{text}</p>
-      </div>
     </div>
   );
 }
