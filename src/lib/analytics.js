@@ -15,6 +15,8 @@ export function trackEvent(eventName, params = {}) {
   });
 }
 
+/* Marketing Website Events */
+
 export function trackStartFreeClick(source = "unknown") {
   trackEvent("start_free_clicked", {
     category: "conversion",
@@ -47,5 +49,51 @@ export function trackDemoSubmitted() {
   trackEvent("demo_request_submitted", {
     category: "lead",
     label: "demo_page",
+  });
+}
+
+/* FarmOS App Onboarding Events */
+
+export function trackUserSignup() {
+  trackEvent("user_signup_completed", {
+    category: "onboarding",
+    label: "signup",
+  });
+}
+
+export function trackFarmCreated() {
+  trackEvent("farm_created", {
+    category: "onboarding",
+    label: "farm_setup",
+  });
+}
+
+export function trackFirstAnimalAdded() {
+  trackEvent("first_animal_added", {
+    category: "activation",
+    label: "animal_record",
+  });
+}
+
+export function trackAnimalAdded() {
+  trackEvent("animal_added", {
+    category: "usage",
+    label: "animal_record",
+  });
+}
+
+/* Billing / Revenue Events */
+
+export function trackSubscriptionStarted(planName = "unknown") {
+  trackEvent("subscription_started", {
+    category: "revenue",
+    label: planName,
+  });
+}
+
+export function trackSubscriptionActivated(planName = "unknown") {
+  trackEvent("subscription_activated", {
+    category: "revenue",
+    label: planName,
   });
 }
